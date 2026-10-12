@@ -5,12 +5,13 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "build:css": "npx tailwindcss -i ./src/index.css -o ./src/output.css --config tailwind.config.cjs",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
-    "@tailwindcss/vite": "^4.3.3",
+    
     "framer-motion": "^10.12.6",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
