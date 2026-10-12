@@ -13,17 +13,28 @@ const Hero = () => {
   return (
     <section ref={ref} className="relative h-screen w-full overflow-hidden">
       {/* Background Image with Parallax */}
-      <motion.div
-        style={{ y }}
-        className="absolute inset-0 h-[120%] w-full"
-      >
+      <motion.div style={{ y }} className="absolute inset-0 h-[120%] w-full">
         <img
           src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2498&q=80"
           alt="Luxury wedding reception hall at golden hour"
           className="h-full w-full object-cover object-center"
         />
-        {/* Cinematic Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0B]/40 via-[#0A0A0B]/60 to-[#0A0A0B]"></div>
+        {/* Strong cinematic overlay for readable text */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              'linear-gradient(180deg, rgba(10,10,11,0.25) 0%, rgba(10,10,11,0.65) 60%, rgba(10,10,11,0.9) 100%)'
+          }}
+        />
+        {/* Subtle gold radial light for premium feel */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              'radial-gradient(ellipse at 20% 10%, rgba(201,168,76,0.06), transparent 20%)'
+          }}
+        />
       </motion.div>
 
       {/* Content */}
@@ -102,21 +113,16 @@ const Hero = () => {
           >
             <a
               href="#contact"
-              className="group relative inline-flex items-center overflow-hidden px-10 py-4 bg-[#C9A84C] text-[#0A0A0B] font-body text-sm tracking-widest uppercase"
+              className="inline-flex items-center px-10 py-4 bg-[#C9A84C] text-[#0A0A0B] font-body text-sm tracking-widest uppercase shadow-[0_10px_30px_rgba(201,168,76,0.12)] hover:bg-[#A68A5B] transition-colors duration-300 z-20"
             >
-              <span className="relative z-10 group-hover:tracking-[0.2em] transition-all duration-500">
-                Book Your Date
-              </span>
-              <span className="absolute inset-0 bg-[#A68A5B] translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out"></span>
+              Book Your Date
             </a>
+
             <a
               href="#venues"
-              className="group relative inline-flex items-center overflow-hidden px-10 py-4 border border-[#F7F4EF]/40 text-[#F7F4EF] font-body text-sm tracking-widest uppercase backdrop-blur-sm"
+              className="inline-flex items-center px-10 py-4 border border-[#F7F4EF]/30 text-[#F7F4EF] font-body text-sm tracking-widest uppercase hover:bg-[#F7F4EF] hover:text-[#0A0A0B] transition-colors duration-300 z-20"
             >
-              <span className="absolute inset-0 bg-[#F7F4EF] translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out"></span>
-              <span className="relative group-hover:text-[#0A0A0B] transition-colors duration-500">
-                Explore the Spaces
-              </span>
+              Explore the Spaces
             </a>
           </motion.div>
         </div>
@@ -127,17 +133,17 @@ const Hero = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 1.4 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2"
+        className="absolute bottom-20 left-1/2 -translate-x-1/2 z-10"
       >
         <motion.div
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
           className="flex flex-col items-center gap-2"
         >
-          <span className="font-body text-xs uppercase tracking-[0.3em] text-[#F7F4EF]/60">
+          <span className="font-body text-xs uppercase tracking-[0.3em] text-[#F7F4EF]/90 bg-[#0A0A0B]/40 px-3 py-1 rounded">
             Scroll
           </span>
-          <div className="relative h-12 w-px bg-[#F7F4EF]/20">
+          <div className="relative h-12 w-px bg-[#F7F4EF]/10">
             <motion.div
               animate={{ y: [0, 48] }}
               transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
