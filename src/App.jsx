@@ -1,4 +1,3 @@
-import { BrowserRouter as Router } from 'react-router-dom'
 import Header from './components/Header'
 import Hero from './components/Hero'
 import StatsBar from './components/StatsBar'
@@ -12,22 +11,20 @@ import Footer from './components/Footer'
 
 function App() {
   return (
-    <Router>
-      <div className="bg-[#0A0A0B] text-[#8A857C] overflow-x-hidden">
-        <Header />
-        <main>
-          <Hero />
-          <StatsBar />
-          <Experience />
-          <Venues />
-          <Gallery />
-          <Differentiators />
-          <Testimonials />
-          <CTA />
-        </main>
-        <Footer />
-      </div>
-    </Router>
+    <div className="bg-[#0A0A0B] text-[#8A857C] overflow-x-hidden">
+      <Header />
+      <main>
+        <Hero />
+        <StatsBar />
+        <Experience />
+        <Venues />
+        <Gallery />
+        <Differentiators />
+        <Testimonials />
+        <CTA />
+      </main>
+      <Footer />
+    </div>
   )
 }
 
