@@ -4,6 +4,7 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+
 :root {
   /* Color Palette - Locked as specified */
   --bg-primary: #0A0A0B;
