@@ -30,7 +30,7 @@ const Gallery = () => {
         <div className="grid grid-cols-1 lg:grid-cols-4 auto-rows-[250px] lg:auto-rows-[300px] gap-4">
           {images.map((image, index) => (
             <motion.div key={index} initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true, margin: '-100px' }} transition={{ duration: 1.2, delay: index * 0.1 }} className={`group relative overflow-hidden ${image.span}`}>
-              <motion.img whileHover={{ scale: 1.08 }} transition={{ duration: 1.2 }} src={image.src} alt={image.alt} className="h-full w-full object-cover" />
+              <motion.img whileHover={{ scale: 1.05 }} transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }} src={image.src} alt={image.alt} className="h-full w-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0B]/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
               <div className="absolute bottom-0 left-0 right-0 translate-y-full group-hover:translate-y-0 transition-transform duration-700 p-6">
                 <span className="font-display text-2xl text-[#F7F4EF]">{image.label}</span>

@@ -113,16 +113,18 @@ const Hero = () => {
           >
             <a
               href="#contact"
-              className="inline-flex items-center px-10 py-4 bg-[#C9A84C] text-[#0A0A0B] font-body text-sm tracking-widest uppercase shadow-[0_10px_30px_rgba(201,168,76,0.12)] hover:bg-[#A68A5B] transition-colors duration-300 z-20"
+              className="group relative inline-flex items-center overflow-hidden px-10 py-4 bg-[#C9A84C] text-[#0A0A0B] font-body text-sm tracking-widest uppercase shadow-[0_10px_30px_rgba(201,168,76,0.15)] z-20"
             >
-              Book Your Date
+              <span className="absolute inset-0 bg-[#A68A5B] translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out"></span>
+              <span className="relative group-hover:tracking-[0.25em] transition-all duration-500">Book Your Date</span>
             </a>
 
             <a
               href="#venues"
-              className="inline-flex items-center px-10 py-4 border border-[#F7F4EF]/30 text-[#F7F4EF] font-body text-sm tracking-widest uppercase hover:bg-[#F7F4EF] hover:text-[#0A0A0B] transition-colors duration-300 z-20"
+              className="group relative inline-flex items-center overflow-hidden px-10 py-4 border border-[#C9A84C] text-[#C9A84C] font-body text-sm tracking-widest uppercase z-20"
             >
-              Explore the Spaces
+              <span className="absolute inset-0 bg-[#C9A84C] translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out"></span>
+              <span className="relative group-hover:text-[#0A0A0B] transition-colors duration-500">Explore the Spaces</span>
             </a>
           </motion.div>
         </div>
@@ -133,24 +135,20 @@ const Hero = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 1.4 }}
-        className="absolute bottom-20 left-1/2 -translate-x-1/2 z-10"
+        className="absolute bottom-16 left-1/2 -translate-x-1/2 z-10"
       >
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-          className="flex flex-col items-center gap-2"
-        >
-          <span className="font-body text-xs uppercase tracking-[0.3em] text-[#F7F4EF]/90 bg-[#0A0A0B]/40 px-3 py-1 rounded">
+        <div className="flex flex-col items-center gap-3">
+          <span className="font-body text-xs uppercase tracking-[0.3em] text-[#F7F4EF]/60 bg-[#0A0A0B]/40 px-3 py-1 rounded-full">
             Scroll
           </span>
-          <div className="relative h-12 w-px bg-[#F7F4EF]/10">
+          <div className="relative h-14 w-px bg-[#F7F4EF]/10">
             <motion.div
-              animate={{ y: [0, 48] }}
-              transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-              className="absolute top-0 h-4 w-px bg-[#C9A84C]"
+              animate={{ y: [0, 56, 0], opacity: [0.4, 1, 0.4] }}
+              transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
+              className="absolute top-0 h-8 w-px bg-gradient-to-b from-transparent via-[#C9A84C] to-transparent"
             ></motion.div>
           </div>
-        </motion.div>
+        </div>
       </motion.div>
     </section>
   )

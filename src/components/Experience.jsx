@@ -7,7 +7,7 @@ const Experience = () => {
 
   return (
     <section id="experience" className="relative py-32 lg:py-48 px-6 lg:px-8 overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#C9A84C]/5 to-transparent opacity-30"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(201,168,76,0.05),transparent)]"></div>
 
       <div className="mx-auto max-w-7xl">
         <motion.div ref={ref} className="grid gap-16 lg:grid-cols-12 lg:gap-8 items-center">
@@ -68,8 +68,9 @@ const Experience = () => {
               transition={{ duration: 0.8, delay: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
               className="mt-10"
             >
-              <a href="#venues" className="group inline-flex items-center gap-2 text-[#C9A84C] font-body text-sm tracking-[0.3em] uppercase">
-                Discover Our Spaces
+              <a href="#venues" className="group relative inline-flex items-center gap-2 overflow-hidden px-6 py-3 border border-[#C9A84C] text-[#C9A84C] font-body text-sm tracking-[0.3em] uppercase">
+                <span className="absolute inset-0 bg-[#C9A84C] translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out"></span>
+                <span className="relative group-hover:text-[#0A0A0B] transition-colors duration-500">Discover Our Spaces</span>
                 <motion.svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-4 w-4 group-hover:translate-x-2 transition-transform duration-300">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
                 </motion.svg>

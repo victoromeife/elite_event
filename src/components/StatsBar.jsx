@@ -24,7 +24,7 @@ const StatsBar = () => {
         <div className="relative overflow-hidden border border-[#C9A84C]/30 bg-[#0A0A0B]/95 backdrop-blur-md">
           {/* Subtle gold glow */}
           <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#C9A84C]/60 to-transparent"></div>
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#C9A84C]/5 to-transparent"></div>
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(201,168,76,0.05),transparent)]"></div>
 
           <div className="relative grid grid-cols-2 gap-8 p-8 md:grid-cols-4 md:gap-12 md:p-12">
             {stats.map((stat, index) => (

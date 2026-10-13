@@ -22,7 +22,7 @@ const Venues = () => {
       title: 'The Terrace',
       capacity: 'Up to 300 guests',
       description: 'Open-air sophistication for cocktails and receptions.',
-      image: 'https://images.unsplash.com/photo-1613742079417-b0a7ad4b1cd5?ixlib=rb-4.1.0&auto=format&fit=crop&w=2671&q=80'
+      image: 'https://images.unsplash.com/photo-1469371670807-013ccf25f16a?ixlib=rb-4.1.0&auto=format&fit=crop&w=2670&q=80'
     }
   ]
 

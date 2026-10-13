@@ -15,7 +15,7 @@ const Differentiators = () => {
   return (
     <section className="relative py-32 lg:py-48 px-6 lg:px-8 overflow-hidden">
       <div className="absolute inset-0 bg-[#0A0A0B]"></div>
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#C9A84C]/5 to-transparent opacity-20"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(201,168,76,0.05),transparent)] opacity-20"></div>
 
       <div className="mx-auto max-w-7xl relative">
         <motion.div ref={ref} initial={{ opacity: 0, y: 60 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 1.2 }} className="text-center mb-20">

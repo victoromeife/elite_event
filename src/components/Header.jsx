@@ -136,9 +136,10 @@ const Header = () => {
             initial={false}
             animate={isMenuOpen ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.4, delay: isMenuOpen ? 0.5 : 0 }}
-            className="mt-8 px-12 py-4 border border-[#C9A84C] text-[#F7F4EF] font-body text-sm tracking-wide hover:bg-[#C9A84C] hover:text-[#0A0A0B] transition-all duration-300"
+            className="group relative inline-flex items-center overflow-hidden mt-8 px-12 py-4 border border-[#C9A84C] text-[#F7F4EF] font-body text-sm tracking-wide"
           >
-            Book a Tour
+            <span className="absolute inset-0 bg-[#C9A84C] translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out"></span>
+            <span className="relative group-hover:text-[#0A0A0B] transition-colors duration-500">Book a Tour</span>
           </motion.a>
         </div>
       </motion.div>
