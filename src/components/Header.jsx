@@ -23,11 +23,11 @@ const Header = () => {
       <motion.header
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? 'bg-[#0A0A0B]/90 backdrop-blur-md border-b border-[#C9A84C]/20'
-            : 'bg-transparent'
+            ? 'bg-[#0A0A0B]/95 backdrop-blur-md border-b border-[#C9A84C]/30'
+            : 'bg-[#0A0A0B]/80 backdrop-blur-sm'
         }`}
       >
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -47,15 +47,15 @@ const Header = () => {
             </motion.div>
 
             {/* Desktop Nav */}
-            <nav className="hidden lg:flex items-center space-x-12">
+            <nav className="hidden lg:flex items-center space-x-10">
               {navLinks.map((link, index) => (
                 <motion.a
                   key={link.name}
                   href={link.href}
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: index * 0.1 }}
-                  className="group relative font-body text-sm text-[#F7F4EF]/80 hover:text-[#F7F4EF] transition-colors duration-300"
+                  transition={{ duration: 0.5, delay: index * 0.05 }}
+                  className="group relative font-body text-sm font-medium text-[#F7F4EF] hover:text-[#C9A84C] transition-colors duration-200"
                 >
                   {link.name}
                   <span className="absolute -bottom-1 left-0 w-0 h-px bg-[#C9A84C] group-hover:w-full transition-all duration-300"></span>
@@ -67,15 +67,15 @@ const Header = () => {
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
               className="hidden lg:block"
             >
               <a
                 href="#contact"
-                className="group relative inline-flex items-center overflow-hidden px-8 py-3 border border-[#C9A84C] text-[#F7F4EF] font-body text-sm tracking-wide"
+                className="group relative inline-flex items-center overflow-hidden px-7 py-2.5 border border-[#C9A84C] text-[#F7F4EF] font-body text-sm font-medium tracking-wide"
               >
-                <span className="absolute inset-0 bg-[#C9A84C] translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out"></span>
-                <span className="relative group-hover:text-[#0A0A0B] transition-colors duration-500">
+                <span className="absolute inset-0 bg-[#C9A84C] translate-y-full group-hover:translate-y-0 transition-transform duration-400 ease-out"></span>
+                <span className="relative group-hover:text-[#0A0A0B] transition-colors duration-400">
                   Book a Tour
                 </span>
               </a>
@@ -113,10 +113,10 @@ const Header = () => {
       <motion.div
         initial={false}
         animate={isMenuOpen ? { opacity: 1, pointerEvents: 'auto' } : { opacity: 0, pointerEvents: 'none' }}
-        transition={{ duration: 0.4 }}
+        transition={{ duration: 0.3 }}
         className="fixed inset-0 z-40 bg-[#0A0A0B] lg:hidden"
       >
-        <div className="flex flex-col items-center justify-center h-full space-y-10">
+        <div className="flex flex-col items-center justify-center h-full space-y-8">
           {navLinks.map((link, index) => (
             <motion.a
               key={link.name}
@@ -124,8 +124,8 @@ const Header = () => {
               onClick={() => setIsMenuOpen(false)}
               initial={false}
               animate={isMenuOpen ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ duration: 0.4, delay: isMenuOpen ? index * 0.1 : 0 }}
-              className="font-display text-4xl text-[#F7F4EF] hover:text-[#C9A84C] transition-colors duration-300"
+              transition={{ duration: 0.3, delay: isMenuOpen ? index * 0.05 : 0 }}
+              className="font-display text-3xl text-[#F7F4EF] hover:text-[#C9A84C] transition-colors duration-200"
             >
               {link.name}
             </motion.a>
@@ -135,11 +135,11 @@ const Header = () => {
             onClick={() => setIsMenuOpen(false)}
             initial={false}
             animate={isMenuOpen ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.4, delay: isMenuOpen ? 0.5 : 0 }}
-            className="group relative inline-flex items-center overflow-hidden mt-8 px-12 py-4 border border-[#C9A84C] text-[#F7F4EF] font-body text-sm tracking-wide"
+            transition={{ duration: 0.3, delay: isMenuOpen ? 0.2 : 0 }}
+            className="group relative inline-flex items-center overflow-hidden mt-4 px-10 py-3 border border-[#C9A84C] text-[#F7F4EF] font-body text-sm tracking-wide"
           >
-            <span className="absolute inset-0 bg-[#C9A84C] translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out"></span>
-            <span className="relative group-hover:text-[#0A0A0B] transition-colors duration-500">Book a Tour</span>
+            <span className="absolute inset-0 bg-[#C9A84C] translate-y-full group-hover:translate-y-0 transition-transform duration-400 ease-out"></span>
+            <span className="relative group-hover:text-[#0A0A0B] transition-colors duration-400">Book a Tour</span>
           </motion.a>
         </div>
       </motion.div>

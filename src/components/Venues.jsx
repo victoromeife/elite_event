@@ -3,68 +3,135 @@ import { useRef } from 'react'
 
 const Venues = () => {
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: '-150px' })
+  const isInView = useInView(ref, { once: true, margin: '-100px' })
 
   const venues = [
     {
       title: 'The Grand Hall',
-      capacity: 'Up to 2,000 guests',
-      description: 'Our flagship space - grand, versatile, and breathtaking.',
+      capacity: 'Up to 500 guests',
+      description: 'Our flagship space — grand, versatile, and breathtaking. High ceilings, premium finishes, and state-of-the-art lighting make it ideal for lavish weddings and landmark celebrations.',
       image: 'https://images.unsplash.com/photo-1469371670807-013ccf25f16a?ixlib=rb-4.1.0&auto=format&fit=crop&w=2670&q=80'
     },
     {
       title: 'The Crystal Room',
-      capacity: 'Up to 500 guests',
-      description: 'Intimate luxury for receptions and corporate dinners.',
+      capacity: 'Up to 200 guests',
+      description: 'Intimate luxury for receptions, corporate dinners, and private gatherings. Refined details and warm ambience create an exclusive atmosphere.',
       image: 'https://images.unsplash.com/photo-1415201364774-f6f0bb35f28f?ixlib=rb-4.1.0&auto=format&fit=crop&w=2670&q=80'
     },
     {
       title: 'The Terrace',
-      capacity: 'Up to 300 guests',
-      description: 'Open-air sophistication for cocktails and receptions.',
-      image: 'https://images.unsplash.com/photo-1469371670807-013ccf25f16a?ixlib=rb-4.1.0&auto=format&fit=crop&w=2670&q=80'
+      capacity: 'Up to 150 guests',
+      description: 'Open-air sophistication for cocktails, receptions, and sunset ceremonies. Overlooks landscaped grounds with string lighting and weather protection.',
+      image: 'https://images.unsplash.com/photo-1519167758481-83f550bb49b3?ixlib=rb-4.1.0&auto=format&fit=crop&w=2498&q=80'
     }
   ]
 
   return (
-    <section id="venues" className="relative py-32 lg:py-48 px-6 lg:px-8">
-      <div className="mx-auto max-w-7xl">
+    <section id="venues" className="relative py-24 lg:py-36 px-6 lg:px-8">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(201,168,76,0.03),transparent)]"></div>
+
+      <div className="mx-auto max-w-7xl relative">
         <motion.div
           ref={ref}
-          initial={{ opacity: 0, y: 60 }}
+          initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 1.2, ease: [0.25, 0.1, 0.25, 1] }}
-          className="text-center mb-20"
+          transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
+          className="text-center mb-16"
         >
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.8, delay: 0.2 }} className="mb-6">
-            <span className="font-body text-sm uppercase tracking-[0.5em] text-[#C9A84C]">Our Venues</span>
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="mb-4"
+          >
+            <span className="font-body text-sm uppercase tracking-[0.4em] text-[#C9A84C]">Our Venues</span>
           </motion.div>
-          <motion.h2 initial={{ opacity: 0, y: 40 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 1.2, delay: 0.3 }} className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tight text-[#F7F4EF]">
-            Spaces Crafted to Impress
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.15 }}
+            className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tight text-[#F7F4EF]"
+          >
+            Spaces Crafted
+            <br />
+            to Impress
           </motion.h2>
-          <motion.div initial={{ width: 0, left: '50%' }} animate={isInView ? { width: '4rem', left: '50%', x: '-50%' } : {}} transition={{ duration: 1, delay: 0.5 }} className="mt-8 h-px bg-[#C9A84C] relative"></motion.div>
+          <motion.div
+            initial={{ width: 0, left: '50%' }}
+            animate={isInView ? { width: '4rem', left: '50%', x: '-50%' } : {}}
+            transition={{ duration: 0.7, delay: 0.3 }}
+            className="mt-6 h-px bg-[#C9A84C] relative"
+          ></motion.div>
         </motion.div>
 
-        <div className="space-y-12 lg:space-y-20">
+        <div className="space-y-16">
           {venues.map((venue, index) => (
             <motion.div
               key={venue.title}
-              initial={{ opacity: 0, y: 80 }}
+              initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-150px' }}
-              transition={{ duration: 1.4, delay: index * 0.2, ease: [0.25, 0.1, 0.25, 1] }}
-              className={`group relative ${index % 2 === 1 ? 'lg:ml-auto lg:w-[90%]' : 'lg:w-[90%]'}`}
+              viewport={{ once: true, margin: '-100px' }}
+              transition={{ duration: 0.9, delay: index * 0.1, ease: [0.25, 0.1, 0.25, 1] }}
+              className="relative group"
             >
-              <div className="relative overflow-hidden">
-                <motion.img whileHover={{ scale: 1.03 }} transition={{ duration: 1.2 }} src={venue.image} alt={venue.title} className="h-[400px] w-full object-cover lg:h-[600px]" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0B]/90 via-[#0A0A0B]/30 to-transparent"></div>
-                <div className="absolute bottom-0 left-0 right-0 p-8 lg:p-12">
-                  <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
-                    <div>
-                      <h3 className="font-display text-3xl lg:text-5xl text-[#F7F4EF] mb-2">{venue.title}</h3>
-                      <p className="font-body text-lg text-[#C9A84C] mb-2">{venue.capacity}</p>
-                      <p className="font-body text-[#F7F4EF]/80 max-w-md">{venue.description}</p>
-                    </div>
+              <div className="grid lg:grid-cols-2 gap-0 lg:gap-8 items-stretch">
+                {/* Image Column */}
+                <div className="relative overflow-hidden lg:rounded-2xl">
+                  <motion.img
+                    whileHover={{ scale: 1.02 }}
+                    transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+                    src={venue.image}
+                    alt={venue.title}
+                    className="h-[350px] lg:h-[500px] w-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0B]/80 via-transparent to-transparent pointer-events-none"></div>
+                  {/* Corner accent */}
+                  <div className="absolute -top-4 -right-4 w-24 h-24 border-2 border-[#C9A84C]/40 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                </div>
+
+                {/* Content Column */}
+                <div className="relative p-8 lg:p-12 flex flex-col justify-center bg-[#0A0A0B] border border-[#C9A84C]/20 lg:border-l-0 lg:rounded-r-2xl">
+                  <div className="max-w-xl">
+                    <motion.div
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={isInView ? { opacity: 1, x: 0 } : {}}
+                      transition={{ duration: 0.5, delay: 0.2 }}
+                      className="mb-4"
+                    >
+                      <span className="font-body text-xs uppercase tracking-[0.3em] text-[#C9A84C]">{venue.capacity}</span>
+                    </motion.div>
+                    <motion.h3
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={isInView ? { opacity: 1, y: 0 } : {}}
+                      transition={{ duration: 0.6, delay: 0.25 }}
+                      className="font-display text-3xl lg:text-4xl text-[#F7F4EF] mb-4"
+                    >
+                      {venue.title}
+                    </motion.h3>
+                    <motion.p
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={isInView ? { opacity: 1, y: 0 } : {}}
+                      transition={{ duration: 0.6, delay: 0.3 }}
+                      className="font-body text-lg text-[#8A857C] leading-relaxed mb-8"
+                    >
+                      {venue.description}
+                    </motion.p>
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={isInView ? { opacity: 1, y: 0 } : {}}
+                      transition={{ duration: 0.5, delay: 0.35 }}
+                    >
+                      <a
+                        href="#contact"
+                        className="group relative inline-flex items-center gap-2 overflow-hidden px-5 py-2.5 border border-[#C9A84C] text-[#C9A84C] font-body text-sm tracking-[0.2em] uppercase"
+                      >
+                        <span className="absolute inset-0 bg-[#C9A84C] translate-y-full group-hover:translate-y-0 transition-transform duration-400 ease-out"></span>
+                        <span className="relative group-hover:text-[#0A0A0B] transition-colors duration-400">View Details</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-4 w-4 group-hover:translate-x-1 transition-transform duration-300">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+                        </svg>
+                      </a>
+                    </motion.div>
                   </div>
                 </div>
               </div>

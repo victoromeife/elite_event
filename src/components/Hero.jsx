@@ -7,7 +7,7 @@ const Hero = () => {
     target: ref,
     offset: ['start start', 'end start']
   })
-  const y = useTransform(scrollYProgress, [0, 1], ['0%', '30%'])
+  const y = useTransform(scrollYProgress, [0, 1], ['0%', '25%'])
   const opacity = useTransform(scrollYProgress, [0, 1], [1, 0])
 
   return (
@@ -24,7 +24,7 @@ const Hero = () => {
           className="absolute inset-0"
           style={{
             background:
-              'linear-gradient(180deg, rgba(10,10,11,0.25) 0%, rgba(10,10,11,0.65) 60%, rgba(10,10,11,0.9) 100%)'
+              'linear-gradient(180deg, rgba(10,10,11,0.3) 0%, rgba(10,10,11,0.6) 50%, rgba(10,10,11,0.95) 100%)'
           }}
         />
         {/* Subtle gold radial light for premium feel */}
@@ -32,7 +32,7 @@ const Hero = () => {
           className="absolute inset-0 pointer-events-none"
           style={{
             background:
-              'radial-gradient(ellipse at 20% 10%, rgba(201,168,76,0.06), transparent 20%)'
+              'radial-gradient(ellipse at 20% 10%, rgba(201,168,76,0.08), transparent 20%)'
           }}
         />
       </motion.div>
@@ -45,9 +45,9 @@ const Hero = () => {
         <div className="mx-auto max-w-7xl">
           {/* Hero Headline */}
           <motion.h1
-            initial={{ opacity: 0, y: 60 }}
+            initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.2, ease: [0.25, 0.1, 0.25, 1], delay: 0.2 }}
+            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1], delay: 0.1 }}
             className="font-display text-[2.75rem] leading-[1.05] tracking-tight text-[#F7F4EF] sm:text-6xl md:text-7xl lg:text-8xl"
           >
             Where Lagos Celebrates
@@ -57,7 +57,7 @@ const Hero = () => {
               <motion.span
                 initial={{ width: 0 }}
                 animate={{ width: '100%' }}
-                transition={{ duration: 1.4, delay: 1.2, ease: [0.25, 0.1, 0.25, 1] }}
+                transition={{ duration: 1, delay: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
                 className="absolute -bottom-2 left-0 h-0.5 bg-[#C9A84C]/80 sm:-bottom-4"
               ></motion.span>
             </span>
@@ -65,10 +65,10 @@ const Hero = () => {
 
           {/* Supporting Line */}
           <motion.p
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.2, ease: [0.25, 0.1, 0.25, 1], delay: 0.4 }}
-            className="mt-8 max-w-2xl mx-auto font-body text-lg text-[#F7F4EF]/90 sm:text-xl md:text-2xl leading-relaxed"
+            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1], delay: 0.25 }}
+            className="mt-6 max-w-2xl mx-auto font-body text-lg text-[#F7F4EF]/90 sm:text-xl md:text-2xl leading-relaxed"
           >
             The stage for your most important moments. Crafted for the extraordinary, set in the heart of Ikorodu.
           </motion.p>
@@ -77,7 +77,7 @@ const Hero = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
             className="mt-6 flex items-center justify-center gap-2 text-[#C9A84C]"
           >
             <svg
@@ -104,50 +104,40 @@ const Hero = () => {
             </span>
           </motion.div>
 
-          {/* CTAs */}
+          {/* CTAs - Redesigned */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
+            transition={{ duration: 0.6, delay: 0.55 }}
             className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6"
           >
             <a
               href="#contact"
-              className="group relative inline-flex items-center overflow-hidden px-10 py-4 bg-[#C9A84C] text-[#0A0A0B] font-body text-sm tracking-widest uppercase shadow-[0_10px_30px_rgba(201,168,76,0.15)] z-20"
+              className="group relative inline-flex items-center overflow-hidden px-10 py-4 bg-[#C9A84C] text-[#0A0A0B] font-body text-sm tracking-widest uppercase shadow-[0_10px_30px_rgba(201,168,76,0.25)] z-20"
             >
-              <span className="absolute inset-0 bg-[#A68A5B] translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out"></span>
-              <span className="relative group-hover:tracking-[0.25em] transition-all duration-500">Book Your Date</span>
+              <span className="absolute inset-0 bg-[#A68A5B] translate-y-full group-hover:translate-y-0 transition-transform duration-400 ease-out"></span>
+              <span className="relative group-hover:tracking-[0.25em] transition-all duration-400">Book Your Date</span>
             </a>
 
             <a
               href="#venues"
               className="group relative inline-flex items-center overflow-hidden px-10 py-4 border border-[#C9A84C] text-[#C9A84C] font-body text-sm tracking-widest uppercase z-20"
             >
-              <span className="absolute inset-0 bg-[#C9A84C] translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out"></span>
-              <span className="relative group-hover:text-[#0A0A0B] transition-colors duration-500">Explore the Spaces</span>
+              <span className="absolute inset-0 bg-[#C9A84C] translate-y-full group-hover:translate-y-0 transition-transform duration-400 ease-out"></span>
+              <span className="relative group-hover:text-[#0A0A0B] transition-colors duration-400">Explore the Spaces</span>
             </a>
           </motion.div>
-        </div>
-      </motion.div>
 
-      {/* Scroll Indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 1.4 }}
-        className="absolute bottom-16 left-1/2 -translate-x-1/2 z-10"
-      >
-        <div className="flex flex-col items-center gap-3">
-          <span className="font-body text-xs uppercase tracking-[0.3em] text-[#F7F4EF]/60 bg-[#0A0A0B]/40 px-3 py-1 rounded-full">
-            Scroll
-          </span>
-          <div className="relative h-14 w-px bg-[#F7F4EF]/10">
-            <motion.div
-              animate={{ y: [0, 56, 0], opacity: [0.4, 1, 0.4] }}
-              transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
-              className="absolute top-0 h-8 w-px bg-gradient-to-b from-transparent via-[#C9A84C] to-transparent"
-            ></motion.div>
-          </div>
+          {/* Bottom accent line instead of scroll indicator */}
+          <motion.div
+            initial={{ opacity: 0, scaleX: 0 }}
+            animate={{ opacity: 1, scaleX: 1 }}
+            transition={{ duration: 1, delay: 0.9, ease: [0.25, 0.1, 0.25, 1] }}
+            className="mt-20 mx-auto max-w-xs"
+          >
+            <div className="relative h-px bg-gradient-to-r from-transparent via-[#C9A84C]/60 to-transparent"></div>
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-[#C9A84C]/40"></div>
+          </motion.div>
         </div>
       </motion.div>
     </section>
