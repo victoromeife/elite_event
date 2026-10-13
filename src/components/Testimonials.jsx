@@ -14,7 +14,6 @@ const Testimonials = () => {
     { quote: "Our daughter's sweet 16 was magical. The Terrace at sunset with string lights — unforgettable.", name: 'The Ogunlesi Family', event: 'Sweet 16' },
   ]
 
-  // Duplicate for seamless marquee
   const duplicated = [...testimonials, ...testimonials]
 
   return (
@@ -30,7 +29,7 @@ const Testimonials = () => {
           <motion.div initial={{ width: 0, left: '50%' }} animate={isInView ? { width: '4rem', left: '50%', x: '-50%' } : {}} transition={{ duration: 0.6, delay: 0.25 }} className="mt-6 h-px bg-[#C9A84C] relative"></motion.div>
         </motion.div>
 
-        {/* Dual Marquee */}
+        {/* Dual Marquee with CSS animations */}
         <div className="relative overflow-hidden">
           {/* Top fade mask */}
           <div className="absolute inset-0 top-0 z-10 h-1/2 bg-gradient-to-b from-[#0A0A0B] to-transparent pointer-events-none"></div>
@@ -62,52 +61,20 @@ const Testimonials = () => {
 
 const Marquee = ({ items, direction, duration, className }) => {
   const trackRef = useRef(null)
-  const x = useMotionValue(0)
-  const controls = useAnimation()
-
-  useEffect(() => {
-    if (!trackRef.current) return
-    
-    const trackWidth = trackRef.current.scrollWidth / 2 // Half because we duplicated
-    
-    if (direction === 'normal') {
-      x.set(0)
-      controls.start({
-        x: -trackWidth,
-        transition: {
-          duration,
-          ease: 'linear',
-          repeat: Infinity,
-          repeatType: 'loop'
-        }
-      })
-    } else {
-      x.set(-trackWidth)
-      controls.start({
-        x: 0,
-        transition: {
-          duration,
-          ease: 'linear',
-          repeat: Infinity,
-          repeatType: 'loop'
-        }
-      })
-    }
-  }, [direction, duration, x, controls])
 
   return (
     <div className={className} style={{ width: '50%' }}>
-      <motion.div 
+      <div 
         ref={trackRef}
-        animate={{ x }}
         className="flex gap-8"
-        style={{ willChange: 'transform' }}
+        style={{
+          animation: `marquee-${direction} ${duration}s linear infinite`,
+          willChange: 'transform'
+        }}
       >
         {items.map((testimonial, index) => (
-          <motion.div
+          <div
             key={index}
-            whileHover={{ y: -4, scale: 1.01 }}
-            transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
             className="group relative border border-[#C9A84C]/20 bg-[#0A0A0B]/50 p-8 lg:p-10 min-w-[350px] max-w-[420px] hover:border-[#C9A84C]/60 transition-all duration-500"
           >
             <div className="absolute top-4 right-4 font-display text-5xl text-[#C9A84C]/10">"</div>
@@ -118,9 +85,19 @@ const Marquee = ({ items, direction, duration, className }) => {
                 <div className="mt-1 font-body text-sm text-[#8A857C]">{testimonial.event}</div>
               </div>
             </div>
-          </motion.div>
+          </div>
         ))}
-      </motion.div>
+      </div>
+      <style jsx global>{`
+        @keyframes marquee-normal {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        @keyframes marquee-reverse {
+          0% { transform: translateX(-50%); }
+          100% { transform: translateX(0); }
+        }
+      `}</style>
     </div>
   )
 }
