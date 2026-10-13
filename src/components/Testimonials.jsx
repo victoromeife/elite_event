@@ -1,4 +1,4 @@
-import { motion, useInView, useMotionValue, useAnimation } from 'framer-motion'
+import { motion, useInView } from 'framer-motion'
 import { useRef, useEffect } from 'react'
 
 const Testimonials = () => {
@@ -14,7 +14,8 @@ const Testimonials = () => {
     { quote: "Our daughter's sweet 16 was magical. The Terrace at sunset with string lights — unforgettable.", name: 'The Ogunlesi Family', event: 'Sweet 16' },
   ]
 
-  const duplicated = [...testimonials, ...testimonials]
+  // Duplicate for seamless loop - each track gets the full set twice
+  const trackItems = [...testimonials, ...testimonials]
 
   return (
     <section className="relative py-24 lg:py-36 px-6 lg:px-8">
@@ -29,7 +30,7 @@ const Testimonials = () => {
           <motion.div initial={{ width: 0, left: '50%' }} animate={isInView ? { width: '4rem', left: '50%', x: '-50%' } : {}} transition={{ duration: 0.6, delay: 0.25 }} className="mt-6 h-px bg-[#C9A84C] relative"></motion.div>
         </motion.div>
 
-        {/* Dual Marquee with CSS animations */}
+        {/* Dual Marquee */}
         <div className="relative overflow-hidden">
           {/* Top fade mask */}
           <div className="absolute inset-0 top-0 z-10 h-1/2 bg-gradient-to-b from-[#0A0A0B] to-transparent pointer-events-none"></div>
@@ -38,19 +39,19 @@ const Testimonials = () => {
 
           <div className="flex space-x-8 lg:space-x-16">
             {/* Marquee 1 - Left to Right */}
-            <Marquee 
-              items={duplicated} 
+            <MarqueeTrack 
+              items={trackItems} 
               direction="normal" 
               duration={30}
-              className="flex-shrink-0"
+              className="flex-shrink-0 w-1/2"
             />
             
             {/* Marquee 2 - Right to Left */}
-            <Marquee 
-              items={duplicated} 
+            <MarqueeTrack 
+              items={trackItems} 
               direction="reverse" 
               duration={35}
-              className="flex-shrink-0"
+              className="flex-shrink-0 w-1/2"
             />
           </div>
         </div>
@@ -59,47 +60,56 @@ const Testimonials = () => {
   )
 }
 
-const Marquee = ({ items, direction, duration, className }) => {
+const MarqueeTrack = ({ items, direction, duration, className }) => {
   const trackRef = useRef(null)
 
+  // Pause on hover
+  useEffect(() => {
+    const track = trackRef.current
+    if (!track) return
+
+    const pause = () => { track.style.animationPlayState = 'paused' }
+    const play = () => { track.style.animationPlayState = 'running' }
+
+    track.addEventListener('mouseenter', pause)
+    track.addEventListener('mouseleave', play)
+
+    return () => {
+      track.removeEventListener('mouseenter', pause)
+      track.removeEventListener('mouseleave', play)
+    }
+  }, [])
+
   return (
-    <div className={className} style={{ width: '50%' }}>
+    <div className={className} style={{ overflow: 'hidden' }}>
       <div 
         ref={trackRef}
         className="flex gap-8"
         style={{
           animation: `marquee-${direction} ${duration}s linear infinite`,
-          willChange: 'transform'
+          willChange: 'transform',
+          width: 'max-content'
         }}
       >
         {items.map((testimonial, index) => (
-          <div
-            key={index}
-            className="group relative border border-[#C9A84C]/20 bg-[#0A0A0B]/50 p-8 lg:p-10 min-w-[350px] max-w-[420px] hover:border-[#C9A84C]/60 transition-all duration-500"
-          >
-            <div className="absolute top-4 right-4 font-display text-5xl text-[#C9A84C]/10">"</div>
-            <div className="relative">
-              <blockquote className="font-display text-lg lg:text-xl text-[#F7F4EF] leading-relaxed italic">{testimonial.quote}</blockquote>
-              <div className="mt-6">
-                <div className="font-body text-sm uppercase tracking-[0.25em] text-[#C9A84C]">{testimonial.name}</div>
-                <div className="mt-1 font-body text-sm text-[#8A857C]">{testimonial.event}</div>
-              </div>
-            </div>
-          </div>
+          <TestimonialCard key={index} testimonial={testimonial} />
         ))}
       </div>
-      <style jsx global>{`
-        @keyframes marquee-normal {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-        @keyframes marquee-reverse {
-          0% { transform: translateX(-50%); }
-          100% { transform: translateX(0); }
-        }
-      `}</style>
     </div>
   )
 }
+
+const TestimonialCard = ({ testimonial }) => (
+  <div className="group relative border border-[#C9A84C]/20 bg-[#0A0A0B]/50 p-8 lg:p-10 min-w-[350px] max-w-[420px] hover:border-[#C9A84C]/60 transition-all duration-500 flex-shrink-0">
+    <div className="absolute top-4 right-4 font-display text-5xl text-[#C9A84C]/10">"</div>
+    <div className="relative">
+      <blockquote className="font-display text-lg lg:text-xl text-[#F7F4EF] leading-relaxed italic">{testimonial.quote}</blockquote>
+      <div className="mt-6">
+        <div className="font-body text-sm uppercase tracking-[0.25em] text-[#C9A84C]">{testimonial.name}</div>
+        <div className="mt-1 font-body text-sm text-[#8A857C]">{testimonial.event}</div>
+      </div>
+    </div>
+  </div>
+)
 
 export default Testimonials

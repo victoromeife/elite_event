@@ -93,3 +93,13 @@ a:focus-visible {
   outline-offset: 3px;
   border-radius: 2px;
 }
+
+/* Marquee Animations */
+@keyframes marquee-normal {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes marquee-reverse {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
