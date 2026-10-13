@@ -14,7 +14,7 @@ const Testimonials = () => {
     { quote: "Our daughter's sweet 16 was magical. The Terrace at sunset with string lights — unforgettable.", name: 'The Ogunlesi Family', event: 'Sweet 16' },
   ]
 
-  // Duplicate for seamless loop - each track gets the full set twice
+  // Duplicate for seamless loop
   const trackItems = [...testimonials, ...testimonials]
 
   return (
@@ -30,37 +30,34 @@ const Testimonials = () => {
           <motion.div initial={{ width: 0, left: '50%' }} animate={isInView ? { width: '4rem', left: '50%', x: '-50%' } : {}} transition={{ duration: 0.6, delay: 0.25 }} className="mt-6 h-px bg-[#C9A84C] relative"></motion.div>
         </motion.div>
 
-        {/* Dual Marquee */}
-        <div className="relative overflow-hidden">
-          {/* Top fade mask */}
-          <div className="absolute inset-0 top-0 z-10 h-1/2 bg-gradient-to-b from-[#0A0A0B] to-transparent pointer-events-none"></div>
-          {/* Bottom fade mask */}
-          <div className="absolute inset-0 bottom-0 z-10 h-1/2 bg-gradient-to-t from-[#0A0A0B] to-transparent pointer-events-none"></div>
-
-          <div className="flex space-x-8 lg:space-x-16">
-            {/* Marquee 1 - Left to Right */}
-            <MarqueeTrack 
-              items={trackItems} 
-              direction="normal" 
-              duration={30}
-              className="flex-shrink-0 w-1/2"
-            />
-            
-            {/* Marquee 2 - Right to Left */}
-            <MarqueeTrack 
-              items={trackItems} 
-              direction="reverse" 
-              duration={35}
-              className="flex-shrink-0 w-1/2"
-            />
-          </div>
+        {/* Vertical Dual Marquee - Stacked */}
+        <div className="relative">
+          {/* Top track - Left to Right */}
+          <MarqueeTrack 
+            items={trackItems} 
+            direction="normal" 
+            duration={30}
+            className="relative"
+            fadeTop={false}
+            fadeBottom={true}
+          />
+          
+          {/* Bottom track - Right to Left */}
+          <MarqueeTrack 
+            items={trackItems} 
+            direction="reverse" 
+            duration={35}
+            className="relative mt-8"
+            fadeTop={true}
+            fadeBottom={false}
+          />
         </div>
       </div>
     </section>
   )
 }
 
-const MarqueeTrack = ({ items, direction, duration, className }) => {
+const MarqueeTrack = ({ items, direction, duration, className, fadeTop, fadeBottom }) => {
   const trackRef = useRef(null)
 
   // Pause on hover
@@ -82,6 +79,10 @@ const MarqueeTrack = ({ items, direction, duration, className }) => {
 
   return (
     <div className={className} style={{ overflow: 'hidden' }}>
+      {/* Fade masks */}
+      {fadeTop && <div className="absolute inset-0 top-0 z-10 h-1/2 bg-gradient-to-b from-[#0A0A0B] to-transparent pointer-events-none" />}
+      {fadeBottom && <div className="absolute inset-0 bottom-0 z-10 h-1/2 bg-gradient-to-t from-[#0A0A0B] to-transparent pointer-events-none" />}
+      
       <div 
         ref={trackRef}
         className="flex gap-8"
